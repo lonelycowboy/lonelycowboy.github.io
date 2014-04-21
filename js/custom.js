@@ -2,6 +2,7 @@ jQuery(document).ready(function(){
 	$('#divRss').FeedEk({
 		FeedUrl: 'http://blog.lonelycowboy.in/feeds/posts/default',
 		MaxCount: 5,
+		ShowDesc:false,
 		DescCharacterLimit: 400
 	});
 	$('.fancybox').fancybox();
