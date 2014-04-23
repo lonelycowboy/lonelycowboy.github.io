@@ -1,101 +1,64 @@
-@white: #fff;
-@nice-blue: #1a8de6;
-
-.border-radius (@radius: 12px) {
-  -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
-      -ms-border-radius: @radius;
-       -o-border-radius: @radius;
-          border-radius: @radius;
-}
-
-.perspective (@perspective: 400px, @origin-start: 50% , @origin-finish: 50%) {
-    -webkit-perspective: @perspective;
-       -moz-perspective: @perspective;
-        -ms-perspective: @perspective;
-         -o-perspective: @perspective;
-            perspective: @perspective;
-
-    -webkit-perspective-origin: @origin-start @origin-finish;
-       -moz-perspective-origin: @origin-start @origin-finish;
-        -ms-perspective-origin: @origin-start @origin-finish;
-         -o-perspective-origin: @origin-start @origin-finish;
-            perspective-origin: @origin-start @origin-finish;
-}
-
-.transition (@property: all, @duration: 400ms, @timing-function: ease, @delay: 0s) {
-    -webkit-transition: @property @duration @timing-function @delay;
-       -moz-transition: @property @duration @timing-function @delay;
-        -ms-transition: @property @duration @timing-function @delay;
-         -o-transition: @property @duration @timing-function @delay;
-            transition: @property @duration @timing-function @delay;
-}
-
-.transform (@origin-start: 50% , @origin-finish: 0%) {
-    -webkit-transform-origin: @origin-start @origin-finish;
-       -moz-transform-origin: @origin-start @origin-finish;
-        -ms-transform-origin: @origin-start @origin-finish;
-         -o-transform-origin: @origin-start @origin-finish;
-            transform-origin: @origin-start @origin-finish;
-}
-
-.transform-3d (@origin-start: 50% , @origin-finish: 0%) {
-    .transform(@origin-start, @origin-finish);
-
-    -webkit-transform-style: preserve-3d;
-       -moz-transform-style: preserve-3d;
-        -ms-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-}
-
-.transform-translate3d (@x: 0px, @y: 105%, @z: 0px, @rotate: -90deg) {
-    -webkit-transform: translate3d( @x, @y, @z ) rotateX( @rotate );
-       -moz-transform: translate3d( @x, @y, @z ) rotateX( @rotate );
-        -ms-transform: translate3d( @x, @y, @z ) rotateX( @rotate );
-         -o-transform: translate3d( @x, @y, @z ) rotateX( @rotate );
-            transform: translate3d( @x, @y, @z ) rotateX( @rotate );
-}
-
-
 .roll {
-    color: @nice-blue !important;
-    display: inline-block;
-    text-decoration: none !important;
-    overflow: hidden;
-    vertical-align: top;
-
-    .perspective;
-
-    &:hover {
-        span {
-            background: #111;
-
-            .transform-translate3d(0px, 0px, -30px, 90deg);
-        }
-    }
-
-    span {
-        display: block;
-        position: relative;
-        padding: 0 2px;
-
-        .transition;
-        .transform-3d;
-
-        &:after {
-            color: @white;
-            background: @nice-blue;
-
-            content: attr(data-title);
-            display: block;
-            padding: 0 2px;
-
-            position: absolute;
-            left: 0;
-            top: 0;
-
-            .transform;
-            .transform-translate3d(0px, 105%, 0px, -90deg);
-        }
-    }
+  color: #1a8de6 !important;
+  display: inline-block;
+  text-decoration: none !important;
+  overflow: hidden;
+  vertical-align: top;
+  -webkit-perspective: 400px;
+  -moz-perspective: 400px;
+  -ms-perspective: 400px;
+  -o-perspective: 400px;
+  perspective: 400px;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  -o-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+}
+.roll:hover span {
+  background: #111;
+  -webkit-transform: translate3d(0px, 0px, -30px) rotateX(90deg);
+  -moz-transform: translate3d(0px, 0px, -30px) rotateX(90deg);
+  -ms-transform: translate3d(0px, 0px, -30px) rotateX(90deg);
+  -o-transform: translate3d(0px, 0px, -30px) rotateX(90deg);
+  transform: translate3d(0px, 0px, -30px) rotateX(90deg);
+}
+.roll span {
+  display: block;
+  position: relative;
+  padding: 0 2px;
+  -webkit-transition: all 400ms ease 0s;
+  -moz-transition: all 400ms ease 0s;
+  -ms-transition: all 400ms ease 0s;
+  -o-transition: all 400ms ease 0s;
+  transition: all 400ms ease 0s;
+  -webkit-transform-origin: 50% 0%;
+  -moz-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -o-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.roll span:after {
+  color: #ffffff;
+  background: #1a8de6;
+  content: attr(data-title);
+  display: block;
+  padding: 0 2px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform-origin: 50% 0%;
+  -moz-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -o-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+  -webkit-transform: translate3d(0px, 105%, 0px) rotateX(-90deg);
+  -moz-transform: translate3d(0px, 105%, 0px) rotateX(-90deg);
+  -ms-transform: translate3d(0px, 105%, 0px) rotateX(-90deg);
+  -o-transform: translate3d(0px, 105%, 0px) rotateX(-90deg);
+  transform: translate3d(0px, 105%, 0px) rotateX(-90deg);
 }
