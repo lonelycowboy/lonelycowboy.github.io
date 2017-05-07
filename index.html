@@ -22,12 +22,12 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen"/>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700,400italic|PT+Serif:400,400italic"/>
         <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-        <script type="text/javascript" src="js/FeedEk.js"></script>
         <script type="text/javascript" src="js/jquery.easytabs.min.js"></script>
         <script type="text/javascript" src="js/respond.min.js"></script>
         <script type="text/javascript" src="js/jquery.adipoli.min.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
         <script type="text/javascript" src="js/custom.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     </head>
     <body>
         <div id="container">
@@ -64,7 +64,28 @@
                 <div id="blog">
                     <div class="blog-section">
                         <h3 class="main-heading"><span>Latest from the blog</span></h3>
-                        <div id="divRss"></div>
+						<script type="text/javascript">
+						  function cbfunction(json) {
+							for (var i = 0; i < json.feed.entry.length; i++) {
+							  for (var j = 0; j < json.feed.entry[i].link.length; j++) {
+								if (json.feed.entry[i].link[j].rel == 'alternate') {
+								  var postUrl = json.feed.entry[i].link[j].href;
+								  break;
+								}
+							  }
+							  var postTitle = json.feed.entry[i].title.$t;
+							  var postDate = json.feed.entry[i].published.$t;
+							  var postSummary = json.feed.entry[i].summary.$t;
+							  var entryShort = postSummary.substring(0, 90);
+							  var entryEnd = entryShort.lastIndexOf(" ");
+							  var postContent = entryShort.substring(0, entryEnd) + '...';
+							  var item = '<div class="wrapper"><h3><a href=' + postUrl + '>' + postTitle + '</h2></a><span>'+ moment(postDate).format('Do MMMM, YYYY [at] h:mm a') + '</span><p>' + postContent + '</p></div>';
+							  document.write(item);
+							}
+						  }
+						</script>
+
+						<script src="https://kaubawi.blogspot.com/feeds/posts/summary?orderby=published&max-results=5&alt=json-in-script&callback=cbfunction"></script>
                     </div>
                 </div>
                 <div id="project">
